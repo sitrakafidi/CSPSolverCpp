@@ -1,0 +1,10 @@
+#ifndef CONSTRAINT_HPP
+#define CONSTRAINT_HPP
+#include <vector>
+#include "Domain.hpp"
+using namespace std;
+class Constraint{
+public:
+	virtual void apply(vector<Domain> domains) = 0;
+};
+#endif 
