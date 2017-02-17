@@ -13,7 +13,7 @@ $(TARGET): $(OBJ_SOLVER)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp
-	$(CXX) -o $@ -c $< $(CXXFLAGS)
+	$(CXX) -o $@ -c $< $(CXXFLAGS) $(LDFLAGS)
 
 Main.o: $(HPP_FILE)
 
