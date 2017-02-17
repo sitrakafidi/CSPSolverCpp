@@ -1,7 +1,7 @@
 #ifndef CONSTRAINT_HPP
 #define CONSTRAINT_HPP
 #include <vector>
-#include "Domain.hpp"
+#include "../solver/Domain.hpp"
 using namespace std;
 class Constraint{
 public:

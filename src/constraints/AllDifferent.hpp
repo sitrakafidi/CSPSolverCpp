@@ -4,11 +4,11 @@
 class AllDifferent : Constraint{
 private :
 	vector<int> domainIndex;
-	void suppValue(int index,)
+	void suppValue(int index,vector<Domain>* domains);
 public :
-	AllDifferent::AllDifferent(vector<int> ind);
-	void apply(vector<Domain> domains);
+	AllDifferent(vector<int> ind);
+	void apply(vector<Domain>* domains);
 
-}
+};
 
 #endif

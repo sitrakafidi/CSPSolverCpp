@@ -6,8 +6,8 @@ Node::Node(vector<Domain> doms){
 	domains = doms;
 }
 
-vector<Domain> Node::getDomains(){
-	return domains;
+vector<Domain>* Node::getDomains(){
+	return &domains;
 }
 
 bool Node::isSolution(){

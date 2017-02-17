@@ -10,7 +10,7 @@ private :
 public :
 	Node();
 	Node(vector<Domain> dom);
-	vector<Domain> getDomains();
+	vector<Domain>* getDomains();
 	bool isSolution();
 	int smallestDomainIndex();
 	bool hasEmptyDomain();
