@@ -1,7 +1,7 @@
 #ifndef ALLDIFFERENT_HPP
 #define ALLDIFFERENT_HPP
 #include "Constraint.hpp"
-class AllDifferent : Constraint{
+class AllDifferent : public Constraint{
 private :
 	vector<int> domainIndex;
 	void suppValue(int index,vector<Domain>* domains);

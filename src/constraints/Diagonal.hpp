@@ -1,7 +1,7 @@
 #ifndef DIAGONAL_HPP
 #define DIAGONAL_HPP
 #include "Constraint.hpp"
-class Diagonal : Constraint{
+class Diagonal : public Constraint{
 private :
 	vector<int> domainIndex;
 	void suppValue(int i,vector<Domain>* domains);

@@ -17,3 +17,11 @@ void Domain::supprValue(int value){
 	}
 }
 
+Domain* Domain::clone(){
+	vector<int> val;
+	for(int i : values){
+		val.push_back(i);
+	}
+	Domain* copy = new Domain(val);
+	return copy;
+}

@@ -11,6 +11,6 @@ public:
 	Domain(vector<int> val);
 	vector<int> getValues();
 	void supprValue(int value);
-
+	Domain* clone();
 };
 #endif

@@ -14,6 +14,7 @@ public :
 	bool isSolution();
 	int smallestDomainIndex();
 	bool hasEmptyDomain();
+	Node* clone();
 
 };
 #endif

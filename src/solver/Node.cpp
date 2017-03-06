@@ -1,6 +1,8 @@
 #include "Node.hpp"
-
+#include <iostream>
 Node::Node(){} 
+
+
 
 Node::Node(vector<Domain> doms){
 	domains = doms;
@@ -39,4 +41,24 @@ bool Node::hasEmptyDomain(){
 		else ++i;
 	}
 	return empty;
+}
+
+Node* Node::clone(){
+	vector<Domain> doms;
+	for(Domain d : domains){
+		doms.push_back(*(d.clone()));
+	}
+	Node* copy = new Node(doms);
+	return copy;
+} 
+
+void Node::afficher(){
+	for(Domain d : domains){
+		cout << "[ " ;
+		for(int i : d.getValues()){
+			cout << i << ' ,';
+		}
+		cout << "]";
+	}
+	cout << endl;
 }

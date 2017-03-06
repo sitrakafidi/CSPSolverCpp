@@ -5,6 +5,6 @@
 using namespace std;
 class Constraint{
 public:
-	virtual void apply(vector<Domain> domains) = 0;
+	virtual void apply(vector<Domain>* domains) = 0;
 };
 #endif 
