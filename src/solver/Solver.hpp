@@ -10,7 +10,10 @@ private:
 	vector<Constraint*> constraints;
 	Node initialNode;
 	void showSolution(Node f);
+	void showErrors(Node f);
 	Node prune(Node e);
+	bool isSolution(Node n);
+
 
 public:
 	Solver(vector<string> var, vector<Constraint*> constr, Node initialN);

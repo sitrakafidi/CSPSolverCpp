@@ -8,6 +8,7 @@ private :
 public :
 	Diagonal(vector<int> ind);
 	void apply(vector<Domain>* domains);
+	bool isRespected(vector<Domain>* domains);
 
 
 };

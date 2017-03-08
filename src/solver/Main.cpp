@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
 	//Nqueens problem
-	int N = 4;
+	int N = 12;
 
 	//Variables
 	vector<string> var;
@@ -32,9 +32,9 @@ int main(){
 		for(int j=0 ; j<N ; ++j){
 			initVec->push_back(j);
 		}
-		doms.push_back(Domain(*initVec));
+		doms.push_back(Domain(initVec));
 	}
-	Node init(doms);
+	Node init(&doms);
 
 	Solver queenSolv(var,constr,init);
 	

@@ -6,15 +6,16 @@ using namespace std;
 
 class Node{
 private :
-	vector<Domain> domains;
+	vector<Domain>* domains;
 public :
 	Node();
-	Node(vector<Domain> dom);
+	Node(vector<Domain>* dom);
 	vector<Domain>* getDomains();
 	bool isSolution();
 	int smallestDomainIndex();
 	bool hasEmptyDomain();
-	Node* clone();
+	Node clone();
+	void afficher();
 
 };
 #endif
