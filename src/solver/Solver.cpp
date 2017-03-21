@@ -1,45 +1,46 @@
 #include "Solver.hpp"
 
-Solver::Solver(vector<string> var, vector<Constraint*> constr, Node initialN){
-	variables = var;
-	constraints = constr;
-	initialNode = initialN;
+
+Solver::Solver(Problem* pbl){
+	pb = pbl;
+	variables = *(pbl->getVariables());
+	constraints = *(pbl->getConstraints());
+	initialNode = *(pbl->getInitialNode());
+	cout << pbl->getInitialNode()->getDomains()->size() << endl;
+	
+	
 }
 
 void Solver::branchAndPrune(){
 	vector<Node> L ;
 	L.push_back(initialNode);
 	while(!L.empty()){
-		//cout << L.size() << endl;
+		
 		Node E = L.at(0).clone();
+		
 		L.erase(L.begin());
-		//cout << "Before prune : " << endl;
-		//E.afficher();
-		Node F = prune(E); //reference ou pas?
-		//cout << "After prune : " << endl;
-		//F.afficher();
+
+		Node F = prune(E); 
+
 		if(!F.hasEmptyDomain()){
-			//cout << "no empty domain!" << endl;
+		
 			if(isSolution(F)){
-				showErrors(F);
-				//showSolution(F);
+				
+				solutions.push_back(F);
+			
 			}
 			else{
 				
 				int index = F.smallestDomainIndex();
-				//cout << F.getDomains()->at(index).getValues().size() << endl;
+	
 				for(int v : *(F.getDomains()->at(index).getValues())){
 					
 					Node G = F.clone();
 
 					G.getDomains()->at(index).getValues()->clear();
-					//cout << "après clear #" << index << endl;
-					//G.afficher();
-					//G.getDomains()->at(index).getValues()->erase(G.getDomains()->at(index).getValues()->begin());
-					//cout << "euh.." << G->getDomains()->at(index).getValues().size() << endl;
+
 					G.getDomains()->at(index).getValues()->push_back(v);
-					//G.afficher();
-					//cout << "blablaeuh.." << G->getDomains()->at(index).getValues().size() << endl;
+
 					L.push_back(G);
 					
 				}
@@ -52,25 +53,13 @@ Node Solver::prune(Node e){
 	Node res = e.clone();
 	for(int i=0 ; i<constraints.size() ; ++i){
 		constraints.at(i)->apply(res.getDomains());
-		//cout << "eto" << endl;
+
 	}
 	return res;
 }
 
-void Solver::showSolution(Node f){
-	cout << "solution found : " << endl;
-	for(int i=0 ; i<variables.size() ; ++i){
-		string line = "";
-		for(int j=0; j<variables.size() ; ++j){
-			if(j == f.getDomains()->at(i).getValues()->at(0)){
-				line = line + "0";
-			} else {
-				line = line + "-";
-			}
-		}
-		cout << line << endl;
-	}
-	cout << "===========================" << endl;
+void Solver::showSolutions(){
+	pb->showSolutions(solutions);
 }
 
 void Solver::showErrors(Node f){
@@ -88,15 +77,8 @@ void Solver::showErrors(Node f){
 
 
 bool Solver::isSolution(Node n){
-	bool constraintsOK = true;
+	bool constraintsOK = true; //FIX ME
 	int i = 0;
-	/*while(constraintsOK && i<constraints.size()){
-		if (!(constraints.at(i)->isRespected(n.getDomains()))){
-			constraintsOK = false;
-		}
-		else ++i;
-	}*/
-
 	bool singlOK = true;
 	i = 0;
 	while(singlOK && i< n.getDomains()->size()){

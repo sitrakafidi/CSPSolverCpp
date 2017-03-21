@@ -1,6 +1,7 @@
 #ifndef DOMAIN_HPP
 #define DOMAIN_HPP
 #include <vector>
+#include <iostream>
 using namespace std;
 
 class Domain{

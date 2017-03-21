@@ -9,7 +9,7 @@ OBJ_SOLVER=$(SRC_SOLVER:.cpp=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ_SOLVER) 
+$(TARGET): $(OBJ_SOLVER)  
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp

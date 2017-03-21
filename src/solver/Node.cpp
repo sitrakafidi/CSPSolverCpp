@@ -45,9 +45,13 @@ bool Node::hasEmptyDomain(){
 
 Node Node::clone(){
 	vector<Domain>* doms = new vector<Domain>();
+	
 	for(Domain d : *domains){
+
 		doms->push_back(d.clone());
+		
 	}
+
 	return Node(doms);
 	
 } 
