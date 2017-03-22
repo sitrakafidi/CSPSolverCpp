@@ -23,16 +23,18 @@ void NQueens::initProblem(){
 	constraints.push_back(diag);
 
 	//Initial Node
-	vector<Domain> doms;
+	
+	vector<Domain>* doms = new vector<Domain>();
 	for(int i=0 ; i<N ; ++i){
 		vector<int>* initVec = new vector<int>() ;
 		for(int j=0 ; j<N ; ++j){
 			initVec->push_back(j);
 		}
-		doms.push_back(Domain(initVec));
+		doms->push_back(Domain(initVec));
 	}
-	Node init(&doms);
-	initialNode = init;
+	
+	initialNode = new Node(doms);
+	
 	 
 }
 
@@ -67,5 +69,5 @@ vector<Constraint*>* NQueens::getConstraints(){
 }
 
 Node* NQueens::getInitialNode(){
-	return &initialNode;
+	return initialNode;
 }

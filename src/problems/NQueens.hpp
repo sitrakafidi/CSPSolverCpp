@@ -11,7 +11,7 @@ private :
 	int N;
 	vector<string> variables;
 	vector<Constraint*> constraints;
-	Node initialNode;
+	Node* initialNode;
 	void initProblem();
 public :
 	NQueens(int n);

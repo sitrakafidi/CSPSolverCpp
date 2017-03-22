@@ -2,18 +2,19 @@
 
 
 Solver::Solver(Problem* pbl){
+
+	
 	pb = pbl;
 	variables = *(pbl->getVariables());
 	constraints = *(pbl->getConstraints());
-	initialNode = *(pbl->getInitialNode());
-	cout << pbl->getInitialNode()->getDomains()->size() << endl;
+	initialNode = pbl->getInitialNode();
 	
 	
 }
 
 void Solver::branchAndPrune(){
 	vector<Node> L ;
-	L.push_back(initialNode);
+	L.push_back(*initialNode);
 	while(!L.empty()){
 		
 		Node E = L.at(0).clone();

@@ -1,8 +1,8 @@
 #include "Domain.hpp"
 using namespace std;
-Domain::Domain(){
+/*Domain::Domain(){
 }
-
+*/
 Domain::Domain(vector<int>* val){
 	values = val;
 }
@@ -20,9 +20,9 @@ void Domain::supprValue(int value){
 Domain Domain::clone(){
 	vector<int>* val = new vector<int>();
 	
-	for(int i : *values){
-		//cout << "coucou" << endl;
-		val->push_back(i);
+	for(int i=0 ; i< values->size() ; ++i){
+
+		val->push_back(values->at(i));
 	}
 	return Domain(val);
 	

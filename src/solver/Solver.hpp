@@ -10,7 +10,7 @@ private:
 	Problem *pb;
 	vector<string> variables;
 	vector<Constraint*> constraints;
-	Node initialNode;
+	Node* initialNode;
 	vector<Node> solutions;
 	
 	void showErrors(Node f);
