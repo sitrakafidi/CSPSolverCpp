@@ -16,6 +16,7 @@ private:
 	void showErrors(Node f);
 	Node prune(Node e);
 	bool isSolution(Node n);
+	bool allConstraintsRespected(Node n);
 
 
 

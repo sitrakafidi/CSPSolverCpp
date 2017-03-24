@@ -13,5 +13,7 @@ public:
 	vector<int>* getValues();
 	void supprValue(int value);
 	Domain clone();
+	void afficher();
+	bool contains(int val);
 };
 #endif

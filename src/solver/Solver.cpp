@@ -26,16 +26,16 @@ void Solver::branchAndPrune(){
 		if(!F.hasEmptyDomain()){
 		
 			if(isSolution(F)){
-				
+				//showErrors(F);
 				solutions.push_back(F);
 			
 			}
 			else{
 				
 				int index = F.smallestDomainIndex();
-	
-				for(int v : *(F.getDomains()->at(index).getValues())){
 					
+				for(int v : *(F.getDomains()->at(index).getValues())){
+					//cout << "branch" << endl;
 					Node G = F.clone();
 
 					G.getDomains()->at(index).getValues()->clear();
@@ -52,10 +52,14 @@ void Solver::branchAndPrune(){
 
 Node Solver::prune(Node e){
 	Node res = e.clone();
-	for(int i=0 ; i<constraints.size() ; ++i){
-		constraints.at(i)->apply(res.getDomains());
-
-	}
+	do{
+		for(int i=0 ; i<constraints.size() ; ++i){
+			constraints.at(i)->apply(res.getDomains());
+			/*for(int j=0 ; j<constraints.size() ;++j){
+				constraints.at(j)->apply(res.getDomains());
+			}*/
+		}
+	} while(!allConstraintsRespected(res));
 	return res;
 }
 
@@ -78,7 +82,7 @@ void Solver::showErrors(Node f){
 
 
 bool Solver::isSolution(Node n){
-	bool constraintsOK = true; //FIX ME
+	bool constraintsOK = true; 
 	int i = 0;
 	bool singlOK = true;
 	i = 0;
@@ -88,5 +92,26 @@ bool Solver::isSolution(Node n){
 		}
 		else ++i;
 	}
+	int j = 0;
+	while(j<constraints.size() && constraintsOK ){
+		if(!(constraints.at(j)->isRespected(n.getDomains()))){ 
+			constraintsOK = false;
+		} else j++;
+
+	}
 	return singlOK && constraintsOK;
+}
+
+bool Solver::allConstraintsRespected(Node n){
+	bool constraintsOK = true; 
+	int j = 0;
+	while(j<constraints.size() && constraintsOK ){
+		if(!(constraints.at(j)->isRespected(n.getDomains()))){ 
+			constraintsOK = false;
+		} else j++;
+
+	}
+	
+
+	return constraintsOK;
 }

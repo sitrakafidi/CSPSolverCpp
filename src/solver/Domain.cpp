@@ -27,3 +27,19 @@ Domain Domain::clone(){
 	return Domain(val);
 	
 }
+
+void Domain::afficher(){
+	cout << "[ " ;
+	for(int i=0; i< values->size(); ++i){
+		cout << values->at(i) << " " ;
+	}
+	cout << "]" << endl;
+}
+
+bool Domain::contains(int val){
+	bool res = false;
+	for(int i=0; i< values->size(); ++i){
+		if(values->at(i)==val) res = true;
+	}
+	return res;
+}
