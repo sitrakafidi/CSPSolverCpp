@@ -3,9 +3,8 @@
 //#include <stdio.h>
 #include <string.h>
 #include "Solver.hpp"
-#include "../constraints/AllDifferent.hpp"
-#include "../constraints/Diagonal.hpp"
 #include "../problems/NQueens.hpp"
+#include "../problems/SendMoreMoney.hpp"
 using namespace std;
 
 int main( int argc, char * argv[]){
@@ -14,6 +13,9 @@ int main( int argc, char * argv[]){
 	char* parameter = argv[2];
 	string nbSolutions = argv[3];
 	int param = atoi(parameter);
+	if(nameProblem!="NQueens" && nameProblem!="SendMoreMoney"){
+		cout << "This problem doesn't exist" << endl;
+	}
 
 	if(nameProblem=="NQueens"){
 		Problem* nq = new NQueens(param);
@@ -31,13 +33,20 @@ int main( int argc, char * argv[]){
 		fin = clock();
 	}
 
-	if(nameProblem=="Money"){
-		/*Problem* nq = new Money(parameter);
-		Solver queenSolv(nq);
+	if(nameProblem=="SendMoreMoney"){
+		Problem* smm = new SendMoreMoney();
+		Solver smmSolv(smm);
 		debut = clock();
-		queenSolv.branchAndPrune();
+
+		if(nbSolutions=="all"){
+			smmSolv.branchAndPrune();
+			smmSolv.showSolutions();
+		} else if(nbSolutions=="one"){
+			smmSolv.branchAndPrune2();
+			smmSolv.showSolution();
+		}
+
 		fin = clock();
-		queenSolv.showSolutions();*/
 	}
 
 	cout << "temps : " << (double) (fin-debut)/CLOCKS_PER_SEC << "s" << endl;
