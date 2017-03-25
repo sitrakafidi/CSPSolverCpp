@@ -16,16 +16,22 @@ int main( int argc, char * argv[]){
 	int param = atoi(parameter);
 
 	if(nameProblem=="NQueens"){
-		cout << "yeah" << endl;
 		Problem* nq = new NQueens(param);
 		Solver queenSolv(nq);
 		debut = clock();
-		queenSolv.branchAndPrune();
+		
+		if(nbSolutions=="all"){
+			queenSolv.branchAndPrune();
+			queenSolv.showSolutions();
+		} else if(nbSolutions=="one"){
+			queenSolv.branchAndPrune2();
+			queenSolv.showSolution();
+		}
+
 		fin = clock();
-		queenSolv.showSolutions();
 	}
 
-	if(nameProblem="Money"){
+	if(nameProblem=="Money"){
 		/*Problem* nq = new Money(parameter);
 		Solver queenSolv(nq);
 		debut = clock();
