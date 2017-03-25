@@ -15,6 +15,7 @@ private :
 	void initProblem();
 public :
 	NQueens(int n);
+	void showSolution(vector<Node> solution);
 	void showSolutions(vector<Node> solutions);
 	virtual vector<string>* getVariables(); 
 	virtual vector<Constraint*>* getConstraints(); 

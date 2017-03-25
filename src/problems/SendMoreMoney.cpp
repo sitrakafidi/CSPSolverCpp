@@ -125,6 +125,18 @@ SendMoreMoney::SendMoreMoney(){
 
 }
 
+void SendMoreMoney::showSolution(vector<Node> solutions){
+	int n = 1;
+	for(Node f : solutions) {
+		cout << "solution #" << n << endl;
+		for(int i=0; i<8 ; ++i){
+			cout << variables.at(i) << " : " << f.getDomains()->at(i).getValues()->at(0) << endl;
+		}
+		cout << "========================" << endl;
+		++n;
+	}
+}
+
 void SendMoreMoney::showSolutions(vector<Node> solutions){
 	int n = 1;
 	for(Node f : solutions) {

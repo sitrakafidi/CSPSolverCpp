@@ -1,6 +1,5 @@
 #ifndef SENDMOREMONEY_HPP
 #define SENDMOREMONEY_HPP
-#include "Problem.hpp"
 #include <vector>
 #include "Problem.hpp"
 #include "../solver/Solver.hpp"
@@ -15,12 +14,10 @@ private:
 	Node* initialNode;
 public:
 	SendMoreMoney();
+	void showSolution(vector<Node> solution);
 	void showSolutions(vector<Node> solutions);
 	virtual vector<string>* getVariables(); 
 	virtual vector<Constraint*>* getConstraints(); 
 	virtual Node* getInitialNode();
 };
-
-
-
 #endif
