@@ -27,6 +27,46 @@ void Solver::branchAndPrune(){
 		
 			if(isSolution(F)){
 				//showErrors(F);
+				solution.push_back(F);
+				solutions.push_back(F);
+			
+			}
+			else{
+				
+				int index = F.smallestDomainIndex();
+					
+				for(int v : *(F.getDomains()->at(index).getValues())){
+					//cout << "branch" << endl;
+					Node G = F.clone();
+
+					G.getDomains()->at(index).getValues()->clear();
+
+					G.getDomains()->at(index).getValues()->push_back(v);
+
+					L.push_back(G);
+					
+				}
+			}
+		}
+	}
+}
+
+void Solver::branchAndPrune2(){
+	vector<Node> L ;
+	L.push_back(*initialNode);
+	while(solution.empty()){
+		
+		Node E = L.at(0).clone();
+		
+		L.erase(L.begin());
+
+		Node F = prune(E); 
+
+		if(!F.hasEmptyDomain()){
+		
+			if(isSolution(F)){
+				//showErrors(F);
+				solution.push_back(F);
 				solutions.push_back(F);
 			
 			}
@@ -61,6 +101,10 @@ Node Solver::prune(Node e){
 		}
 	} while(!allConstraintsRespected(res));
 	return res;
+}
+
+void Solver::showSolution(){
+	pb->showSolution(solution);
 }
 
 void Solver::showSolutions(){
