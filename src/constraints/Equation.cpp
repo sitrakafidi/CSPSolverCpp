@@ -6,6 +6,8 @@ Equation::Equation(vector<int> ind , vector<int> coef){
 	coefficients = coef;
 }
 
+
+
 void Equation::apply(vector<Domain>* domains){
 	bool allDomainsSingl = true;
 	for(int i : domainIndex){

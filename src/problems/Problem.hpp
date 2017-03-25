@@ -7,7 +7,6 @@ using namespace std;
 
 class Problem{
 public:
-	virtual void showSolution(vector<Node> solutions) = 0;
 	virtual void showSolutions(vector<Node> solutions) = 0;
 	virtual vector<string>* getVariables() = 0; 
 	virtual vector<Constraint*>* getConstraints() = 0; 

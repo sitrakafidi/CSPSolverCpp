@@ -26,8 +26,6 @@ void Solver::branchAndPrune(){
 		if(!F.hasEmptyDomain()){
 		
 			if(isSolution(F)){
-				//showErrors(F);
-				solution.push_back(F);
 				solutions.push_back(F);
 			
 			}
@@ -54,7 +52,7 @@ void Solver::branchAndPrune(){
 void Solver::branchAndPrune2(){
 	vector<Node> L ;
 	L.push_back(*initialNode);
-	while(solution.empty()){
+	while(solutions.empty()){
 		
 		Node E = L.at(0).clone();
 		
@@ -65,10 +63,7 @@ void Solver::branchAndPrune2(){
 		if(!F.hasEmptyDomain()){
 		
 			if(isSolution(F)){
-				//showErrors(F);
-				solution.push_back(F);
 				solutions.push_back(F);
-			
 			}
 			else{
 				
@@ -103,9 +98,7 @@ Node Solver::prune(Node e){
 	return res;
 }
 
-void Solver::showSolution(){
-	pb->showSolution(solution);
-}
+
 
 void Solver::showSolutions(){
 	pb->showSolutions(solutions);

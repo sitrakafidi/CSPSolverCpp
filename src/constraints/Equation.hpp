@@ -6,7 +6,6 @@ private :
 	private :
 	vector<int> domainIndex;
 	vector<int> coefficients;	
-	//void suppValue(int index,vector<Domain>* domains);
 public :
 	Equation(vector<int> ind , vector<int> coef);
 	void apply(vector<Domain>* domains);

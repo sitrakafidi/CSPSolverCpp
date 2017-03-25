@@ -12,7 +12,6 @@ private:
 	vector<Constraint*> constraints;
 	Node* initialNode;
 	vector<Node> solutions;
-	vector<Node> solution;
 	
 	void showErrors(Node f);
 	Node prune(Node e);
@@ -25,7 +24,6 @@ public:
 	Solver(Problem* pbl);
 	void branchAndPrune();
 	void branchAndPrune2();
-	void showSolution();
 	void showSolutions();
 };
 #endif

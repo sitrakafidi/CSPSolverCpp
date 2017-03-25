@@ -58,26 +58,6 @@ void NQueens::showSolutions(vector<Node> solutions){
 	}
 }
 
-void NQueens::showSolution(vector<Node> solutions){
-	int n = 1;
-	for(Node f : solutions) {
-		cout << "solution #" << n  << " : " << endl;
-		for(int i=0 ; i<N ; ++i){
-			string line = "";
-			for(int j=0; j<N ; ++j){
-				if(j == f.getDomains()->at(i).getValues()->at(0)){
-					line = line + "0";
-				} else {
-					line = line + "-";
-				}
-			}
-			cout << line << endl;
-		}
-		cout << "===========================" << endl;
-		++n;
-	}
-}
-
 vector<string>* NQueens::getVariables(){
 	return &variables;
 }
